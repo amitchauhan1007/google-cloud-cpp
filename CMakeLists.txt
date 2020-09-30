@@ -126,17 +126,18 @@ list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 include(CMakeDependentOption)
 
 option(GOOGLE_CLOUD_CPP_ENABLE_BIGQUERY "Enable building the BigQuery library."
-       ON)
+       OFF)
 option(GOOGLE_CLOUD_CPP_ENABLE_BIGTABLE "Enable building the Bigtable library."
        ON)
 option(GOOGLE_CLOUD_CPP_ENABLE_SPANNER "Enable building the Spanner library."
-       ON)
+       OFF)
 option(GOOGLE_CLOUD_CPP_ENABLE_STORAGE "Enable building the Storage library."
-       ON)
+       OFF)
 option(GOOGLE_CLOUD_CPP_ENABLE_FIRESTORE
-       "Enable building the Firestore library." ON)
-option(GOOGLE_CLOUD_CPP_ENABLE_PUBSUB "Enable building the Pub/Sub library." ON)
-option(GOOGLE_CLOUD_CPP_ENABLE_GENERATOR "Enable building the generator." ON)
+       "Enable building the Firestore library." OFF)
+option(GOOGLE_CLOUD_CPP_ENABLE_PUBSUB "Enable building the Pub/Sub library."
+       OFF)
+option(GOOGLE_CLOUD_CPP_ENABLE_GENERATOR "Enable building the generator." OFF)
 
 # Compute the default value for GOOGLE_CLOUD_CPP_ENABLE_GRPC.
 string(
@@ -149,7 +150,7 @@ string(
 
 cmake_dependent_option(
     GOOGLE_CLOUD_CPP_ENABLE_GRPC "Enable building the gRPC utilities library."
-    ON "${GOOGLE_CLOUD_CPP_ENABLE_GRPC_EXPRESSION}" OFF)
+    ON "${GOOGLE_CLOUD_CPP_ENABLE_GRPC_EXPRESSION}" ON)
 mark_as_advanced(GOOGLE_CLOUD_CPP_ENABLE_GRPC)
 
 if (${GOOGLE_CLOUD_CPP_ENABLE_GRPC})
